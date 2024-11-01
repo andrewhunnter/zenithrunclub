@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
      // Explicit image paths for each carousel
      const gainesvilleImages = [
-        '../public/gnv/gnv-1.jpeg',
-        '../public/gnv/gnv-2.jpeg',
+        '/images//gnv/gnv-1.jpeg',
+        '/images/gnv/gnv-2.jpeg',
     ];
 
     const miamiImages = [
-        '../public/miami/deering.jpeg',
-        '../public/miami/deering-2.jpeg',
+        '/images/miami/deering.jpeg',
+        '/images/miami/deering-2.jpeg',
     ];
 
     // Initialize gallery grid

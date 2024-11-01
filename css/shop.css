@@ -58,7 +58,7 @@ nav {
 .logo-image {
     width: 40px; /* Adjust size as needed */
     height: 40px; /* Adjust size as needed */
-    background-image: url('../public/logo.png');
+    background-image: url('/images/logo.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
