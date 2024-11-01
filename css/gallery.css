@@ -33,7 +33,7 @@ body {
 .logo-image {
     width: 40px; /* Adjust size as needed */
     height: 40px; /* Adjust size as needed */
-    background-image: url('../public/logo.png');
+    background-image: url('/public/logo.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -94,7 +94,7 @@ h2 {
 .gallery-banner {
     width: 100%;
     padding: 60px 0;
-    background-image: url('../public/banner-2.jpeg');
+    background-image: url('/public/banner-2.jpeg');
     background-size: cover;
     background-position: center;
     position: relative;
