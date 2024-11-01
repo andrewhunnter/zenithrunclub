@@ -1,0 +1,186 @@
+/* contact.css */
+#vanta-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensure it's behind all content */
+}
+
+#contact {
+    padding: 120px 20px 80px;
+    color: var(--primary-text);
+}
+
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cta-title {
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 40px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.highlight {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 500;
+    color: #ffffff;
+    font-style: italic;
+}
+
+.founders-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.founder-card {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2),
+                0 0 0 2px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.founder-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+}
+
+.founder-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.founder-card h3 {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.founder-card p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Social Links Container */
+.social-contacts {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+/* New Social Button Styling */
+.social-buttons {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 250px;
+    padding: 12px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--primary-text);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.social-buttons::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--secondary-bg), var(--accent-color) 50%, var(--primary-text));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.social-buttons:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+}
+
+.social-buttons:hover::before {
+    opacity: 0.8;
+}
+
+.social-buttons i {
+    margin-right: 10px;
+    font-size: 1.3em;
+    transition: transform 0.3s ease;
+}
+
+.social-buttons:hover i {
+    transform: rotate(360deg);
+}
+
+/* Icon Styling */
+.social-buttons i {
+    margin-right: 8px;
+    font-size: 1rem;
+}
+
+.calendly-container {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2),
+                0 0 0 2px rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 1200px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.calendly-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+}
+
+/* Style the iframe itself */
+.calendly-inline-widget {
+    min-width: 320px !important;
+    height: 700px !important;
+    background: transparent;
+}
+
+@media screen and (max-width: 768px) {
+    .founders-container {
+        flex-direction: column;
+    }
+
+    .founder-card {
+        margin-bottom: 30px;
+    }
+    .calendly-container {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .calendly-inline-widget {
+        height: 600px !important;
+    }
+}

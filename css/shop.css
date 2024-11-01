@@ -1,0 +1,315 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
+:root {
+    --primary-bg: #000000;
+    --secondary-bg: #1a1a1a;
+    --primary-text: #ffffff;
+    --accent-color: #ff69b4;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: var(--primary-text);
+    background-color: var(--primary-bg);
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-text {
+    color: var(--primary-text);
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 700;   
+    letter-spacing: 1px;
+}
+
+.banner-logo {
+    max-width: 200px; /* Adjust this value to set the desired size of your logo */
+    height: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.logo-image {
+    width: 40px; /* Adjust size as needed */
+    height: 40px; /* Adjust size as needed */
+    background-image: url('../public/logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: 15px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    color: var(--primary-text);
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 700;   
+    letter-spacing: 1px;
+}
+
+nav ul li a:hover {
+    color: var(--accent-color);
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px 20px;
+}
+
+section {
+    margin-bottom: 60px;
+}
+
+h1, h2 {
+    color: var(--primary-text);
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+h1 {
+    color: #ff69b4;
+    font-weight: 700;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+body.blurred > *:not(#password-overlay) {
+    filter: blur(10px);
+}
+
+#password-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+#password-form {
+    background-color: var(--secondary-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#password-input {
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+    border: none;
+    border-radius: 5px;
+}
+
+#submit-password {
+    padding: 0.5rem 1rem;
+    background-color: var(--accent-color);
+    color: var(--primary-text);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#submit-password:hover {
+    background-color: #ff45a0;
+}
+
+#products {
+    min-height: 100vh;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background-image: url('../public/stars.png');
+    background-size: 600px 600px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#products h2,
+#products p {
+    padding: 10px 20px;
+    border-radius: 5px;
+    max-width: 80%; /* Limit the width of the text box */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.product-item {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at bottom left, var(--accent-color) 0%, transparent 60%);
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(255, 105, 180, 0.3);
+}
+
+.product-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.product-item h3 {
+    margin: 0 0 15px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+}
+
+.product-item p {
+    margin: 0 0 20px;
+    font-size: 1rem;
+    color: var(--primary-text);
+    opacity: 0.8;
+}
+
+.product-item button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--primary-text);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    margin-top: auto;
+}
+
+.product-item button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--secondary-bg), var(--accent-color) 50%, var(--primary-text));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.product-item button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+}
+
+.product-item button:hover::before {
+    opacity: 0.8;
+}
+
+footer {
+    background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
+    color: var(--primary-text);
+    text-align: center;
+    padding: 30px 0;
+    font-size: 0.9rem;
+    font-weight: 300;
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at bottom left, var(--accent-color) 0%, transparent 60%);
+    opacity: 0.1;
+    pointer-events: none;
+}

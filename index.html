@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <div id="vanta-container"></div>
+    <header>
+        <nav>
+          <div class="logo">
+            <div class="logo-image"></div>
+            <span class="logo-text">ZENITH RUN CLUB</span>
+          </div>
+          <button class="hamburger" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <ul class="nav-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="contact/index.html">CONTACT</a></li>
+            <li><a href="gallery/index.html">GALLERY</a></li>
+            <li><a href="shop/index.html">SHOP</a></li>
+          </ul>
+        </nav>
+    </header>
+
+    <main role="main">
+
+        <section id="hero" class="section">
+            <div class="banner">
+                <img src="/public/logo.png" alt="Zenith Run Club Logo" class="banner-logo">
+            </div>
+            
+            <div class="hero-content">
+                <div class="cta-section">
+                    <h2 class="cta-title">FIND YOUR <span class="highlight">"ZEE-NITH"</span></h2>
+                    <p>All paces welcome here...</p>
+                    <div class="steps-container">
+                        <div class="step">
+                            <div class="step-content">
+                                <div class="step-icon">1</div>
+                                <h3>SIGN UP</h3>
+                                <p>Sign media release and waiver</p>
+                            </div>
+                            <div class="step-image" style="background-image: url('/public/image-1.jpeg');"></div>
+                        </div>
+                        <div class="step">
+                            <div class="step-content">
+                                <div class="step-icon">2</div>
+                                <h3>CONNECT</h3>
+                                <p>Join our WhatsApp group chats</p>
+                            </div>
+                            <div class="step-image" style="background-image: url('/public/image-2.jpeg');"></div>
+                        </div>
+                        <div class="step">
+                            <div class="step-content">
+                                <div class="step-icon">3</div>
+                                <h3>FOLLOW</h3>
+                                <p>Follow us on Instagram</p>
+                            </div>
+                            <div class="step-image" style="background-image: url('/public/image-3.jpeg');"></div>
+                        </div>
+                    </div>
+                    <a href="#next-run" class="cta-button">JOIN A RUN</a>
+                </div>
+            </div>
+        </section>
+
+       <section id="next-run" class="section">
+                <h2 class="cta-title">GROUP <span class="highlight">RUNS</span></h2>
+                <div class="run-locations">
+                    <div class="run-location">
+                        <h2 class="cta-title">GNV</h2>
+                        <div id="countdown-gainesville" class="countdown">
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle class="dial-bg" cx="60" cy="60" r="54"></circle>
+                                <circle class="dial-ring days-ring" cx="60" cy="60" r="54"></circle>
+                                <text class="dial-text dial-value days-value" x="60" y="55" text-anchor="middle" dominant-baseline="central">00</text>
+                                <text class="dial-text dial-label" x="60" y="75" text-anchor="middle" dominant-baseline="central">DAYS</text>
+                            </svg>
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle class="dial-bg" cx="60" cy="60" r="54"></circle>
+                                <circle class="dial-ring hours-ring" cx="60" cy="60" r="54"></circle>
+                                <text class="dial-text dial-value hours-value" x="60" y="55" text-anchor="middle" dominant-baseline="central">00</text>
+                                <text class="dial-text dial-label" x="60" y="75" text-anchor="middle" dominant-baseline="central">HOURS</text>
+                            </svg>
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle class="dial-bg" cx="60" cy="60" r="54"></circle>
+                                <circle class="dial-ring minutes-ring" cx="60" cy="60" r="54"></circle>
+                                <text class="dial-text dial-value minutes-value" x="60" y="55" text-anchor="middle" dominant-baseline="central">00</text>
+                                <text class="dial-text dial-label" x="60" y="75" text-anchor="middle" dominant-baseline="central">MINUTES</text>
+                            </svg>
+                        </div>
+                        <div class="location-wrapper">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>4th Ave Food Park</p>
+                        </div>
+                        <p>Distance: 5K</p>
+                        <div id="map-gainesville" class="run-map"></div>
+                    </div>
+                    <div class="run-location">
+                        <h2 class="cta-title">MIAMI</h2>
+                        <div id="countdown-miami" class="countdown">
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle class="dial-bg" cx="60" cy="60" r="54"></circle>
+                                <circle class="dial-ring days-ring" cx="60" cy="60" r="54"></circle>
+                                <text class="dial-text dial-value days-value" x="60" y="55" text-anchor="middle" dominant-baseline="central">00</text>
+                                <text class="dial-text dial-label" x="60" y="75" text-anchor="middle" dominant-baseline="central">DAYS</text>
+                            </svg>
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle class="dial-bg" cx="60" cy="60" r="54"></circle>
+                                <circle class="dial-ring hours-ring" cx="60" cy="60" r="54"></circle>
+                                <text class="dial-text dial-value hours-value" x="60" y="55" text-anchor="middle" dominant-baseline="central">00</text>
+                                <text class="dial-text dial-label" x="60" y="75" text-anchor="middle" dominant-baseline="central">HOURS</text>
+                            </svg>
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle class="dial-bg" cx="60" cy="60" r="54"></circle>
+                                <circle class="dial-ring minutes-ring" cx="60" cy="60" r="54"></circle>
+                                <text class="dial-text dial-value minutes-value" x="60" y="55" text-anchor="middle" dominant-baseline="central">00</text>
+                                <text class="dial-text dial-label" x="60" y="75" text-anchor="middle" dominant-baseline="central">MINUTES</text>
+                            </svg>
+                        </div>
+                        <div class="location-wrapper">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>Deering Estate</p>
+                        </div>
+                        <p>Distance: 5K</p>
+                        <div id="map-miami" class="run-map"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="necessary-links" class="section">
+                <div class="section-container">
+                    <h2 class="cta-title">NECESSARY <span class="highlight">LINKS</span></h2>
+                    <div class="links-container">
+                        <div class="waiver-links">
+                            <h3>Waivers</h3>
+                            <p>Sign our media release and waiver...</p>
+                            <div class="button-group">
+                                <a href="https://docs.google.com/document/d/1g7IO_4pCJ8lASW7ZcKtmm47pskJ8regYuS2Q363VttE/edit?tab=t.0" class="social-button media-release">
+                                    <i class="fas fa-camera"></i> Media Release
+                                </a>
+                                <a href="https://docs.google.com/document/d/1ui1l5ZsHMKANp-Nd0FhJHbQ4HwwqjHqp7nbPKeQ4QoY/edit?tab=t.0" class="social-button waiver">
+                                    <i class="fas fa-file-signature"></i> Waiver
+                                </a>
+                            </div>
+                        </div>
+                        <div class="social-links">
+                            <h3>Our Socials</h3>
+                            <p>Follow us on Instagram...</p>
+                            <div class="button-group">
+                                <a href="https://www.instagram.com/zenithrunclub/?hl=en" class="social-button instagram-miami">
+                                    <i class="fab fa-instagram"></i> Miami
+                                </a>
+                                <a href="https://www.instagram.com/zenith.gnv/?hl=en" class="social-button instagram-gainesville">
+                                    <i class="fab fa-instagram"></i> Gainesville
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="events" class="section">
+                <div class="section-container">
+                  <h2 class="cta-title">UPCOMING <span class="highlight">EVENTS</span></h2>
+                  <p class="section-description">Join us for our exciting upcoming runs and don't forget to use our exclusive discount codes!</p>
+                  
+                  <div class="events-container">
+                    <!-- Event cards will be dynamically inserted here -->
+                  </div>
+                </div>
+              </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Zenith Run Club. All rights reserved.</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
