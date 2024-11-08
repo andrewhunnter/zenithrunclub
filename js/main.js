@@ -106,14 +106,14 @@ document.addEventListener('DOMContentLoaded', () => {
             lat: 29.6516, 
             lon: -82.3248, 
             zoom: 13,
-            nextRunDate: new Date('2024-11-03T08:00:00').getTime()
+            nextRunDate: new Date('2024-11-10T08:00:00').getTime()
         },
         { 
             name: 'miami', 
             lat: 25.6714, 
             lon: -80.2726, 
             zoom: 13,
-            nextRunDate: new Date('2024-11-03T08:00:00').getTime()
+            nextRunDate: new Date('2024-11-10T08:00:00').getTime()
         }
     ];
 
