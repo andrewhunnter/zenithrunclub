@@ -30,11 +30,17 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.remove('no-scroll');
         }
     });
+
+    // Particle Animation Setup
+    const vantaContainer = document.getElementById('vanta-container');
+    if (!vantaContainer) {
+        console.error('Vanta container not found');
+        return;
+    }
   
     // Particle Animation Setup
     const particleCanvas = document.createElement('canvas');
     const ctx = particleCanvas.getContext('2d');
-    const vantaContainer = document.getElementById('vanta-container');
     particleCanvas.style.position = 'absolute';
     particleCanvas.style.top = '0';
     particleCanvas.style.left = '0';
