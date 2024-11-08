@@ -56,8 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let autoSlideInterval;
 
     function updateCarousel() {
-        console.log("Updating carousel position to slide", currentSlide);
-        // Update slide position with potential fixed width (debugging purposes)
         carouselContainer.style.transform = `translateX(-${currentSlide * (100 / slides.length)}%)`;
     }
 
@@ -67,31 +65,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function startAutoSlide() {
-        console.log("Starting auto-slide interval");
         autoSlideInterval = setInterval(nextSlide, 5000);
     }
 
     function stopAutoSlide() {
-        console.log("Stopping auto-slide interval");
         clearInterval(autoSlideInterval);
     }
-
-
-    // Add hover pause functionality
-    carouselContainer.addEventListener('mouseenter', () => {
-        console.log("Mouse entered carousel - pausing auto-slide");
-        stopAutoSlide();
-    });
-    carouselContainer.addEventListener('mouseleave', () => {
-        console.log("Mouse left carousel - resuming auto-slide");
-        startAutoSlide();
-    });
 
     // Start auto-sliding
     startAutoSlide();
     
-    // Additional debugging for container dimensions
-    console.log("Carousel container dimensions:", carouselContainer.clientWidth, carouselContainer.clientHeight);
     slides.forEach((slide, idx) => {
         console.log(`Slide ${idx} dimensions:`, slide.clientWidth, slide.clientHeight);
     });
