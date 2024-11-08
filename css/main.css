@@ -256,13 +256,7 @@ h2 {
     transform: scale(1.2);
 }
 
-#hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
+
 
 .banner {
     width: 100%;
