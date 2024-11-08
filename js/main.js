@@ -4,84 +4,82 @@ document.addEventListener('DOMContentLoaded', () => {
     // Hamburger menu functionality
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
-    const navLinksItems = document.querySelectorAll('.nav-links a');
+    
+    if (hamburger && navLinks) {
+        const navLinksItems = document.querySelectorAll('.nav-links a');
 
-    // Toggle menu when hamburger is clicked
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navLinks.classList.toggle('active');
-        document.body.classList.toggle('no-scroll'); // Prevent background scrolling
-    });
-
-    // Close menu when nav links are clicked
-    navLinksItems.forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
-            document.body.classList.remove('no-scroll');
+        // Toggle menu when hamburger is clicked
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
         });
-    });
 
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
-            document.body.classList.remove('no-scroll');
-        }
-    });
+        // Close menu when nav links are clicked
+        navLinksItems.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            });
+        });
 
-    VANTA.FOG({
-        el: "#vanta-container",
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 100.00,
-        minWidth: 100.00,
-        highlightColor: 0xf061a5,
-        midtoneColor: 0x0,
-        lowlightColor: 0x0,
-        baseColor: 0x0,
-        blurFactor: 0.6,
-        speed: 0.7,
-        zoom: 0.9
-    });
-   
-    // Carousel setup
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            }
+        });
+    }
+
+    // Initialize VANTA only if the container exists
+    const vantaContainer = document.getElementById('vanta-container');
+    if (vantaContainer && typeof VANTA !== 'undefined' && VANTA.FOG) {
+        VANTA.FOG({
+            el: "#vanta-container",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 100.00,
+            minWidth: 100.00,
+            highlightColor: 0xf061a5,
+            midtoneColor: 0x0,
+            lowlightColor: 0x0,
+            baseColor: 0x0,
+            blurFactor: 0.6,
+            speed: 0.7,
+            zoom: 0.9
+        });
+    }
+
+    // Carousel functionality
     const carouselContainer = document.querySelector('.carousel-container');
     const slides = document.querySelectorAll('.carousel-slide');
-    const indicatorsContainer = document.querySelector('.carousel-indicators');
+    let autoSlideInterval;
 
     if (carouselContainer && slides.length > 0) {
         let currentSlide = 0;
-        let autoSlideInterval;
 
-        function updateCarousel() {
-            if (carouselContainer) {
-                carouselContainer.style.transform = `translateX(-${currentSlide * (100 / slides.length)}%)`;
-            }
-        }
+        const updateCarousel = () => {
+            carouselContainer.style.transform = `translateX(-${currentSlide * (100 / slides.length)}%)`;
+        };
 
-        function nextSlide() {
+        const nextSlide = () => {
             currentSlide = (currentSlide + 1) % slides.length;
             updateCarousel();
-        }
+        };
 
-        function startAutoSlide() {
+        const startAutoSlide = () => {
+            if (autoSlideInterval) clearInterval(autoSlideInterval);
             autoSlideInterval = setInterval(nextSlide, 5000);
-        }
+        };
 
-        function stopAutoSlide() {
-            clearInterval(autoSlideInterval);
-        }
-
-        // Start auto-sliding if elements are correctly set up
         startAutoSlide();
     }
 
-    // Start auto-sliding
-    startAutoSlide();
-    
+    // Locations and countdowns
     const locations = [
         { 
             name: 'gainesville', 
@@ -100,14 +98,19 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     locations.forEach(location => {
-        const daysRing = document.querySelector(`#countdown-${location.name} .days-ring`);
-        const hoursRing = document.querySelector(`#countdown-${location.name} .hours-ring`);
-        const minutesRing = document.querySelector(`#countdown-${location.name} .minutes-ring`);
-        const daysValue = document.querySelector(`#countdown-${location.name} .days-value`);
-        const hoursValue = document.querySelector(`#countdown-${location.name} .hours-value`);
-        const minutesValue = document.querySelector(`#countdown-${location.name} .minutes-value`);
+        const countdownEl = document.querySelector(`#countdown-${location.name}`);
+        if (!countdownEl) return;
 
-        const circumference = 2 * Math.PI * 54; // Assuming the radius is 54
+        const daysRing = countdownEl.querySelector('.days-ring');
+        const hoursRing = countdownEl.querySelector('.hours-ring');
+        const minutesRing = countdownEl.querySelector('.minutes-ring');
+        const daysValue = countdownEl.querySelector('.days-value');
+        const hoursValue = countdownEl.querySelector('.hours-value');
+        const minutesValue = countdownEl.querySelector('.minutes-value');
+
+        if (!daysRing || !hoursRing || !minutesRing || !daysValue || !hoursValue || !minutesValue) return;
+
+        const circumference = 2 * Math.PI * 54;
         daysRing.style.strokeDasharray = circumference;
         hoursRing.style.strokeDasharray = circumference;
         minutesRing.style.strokeDasharray = circumference;
@@ -146,50 +149,52 @@ document.addEventListener('DOMContentLoaded', () => {
         const countdownTimer = setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // Initialize Leaflet map
-        const map = L.map(`map-${location.name}`, {
-            center: [location.lat, location.lon],
-            zoom: location.zoom,
-            zoomControl: false,
-            attributionControl: false
-        });
+        // Initialize map only if the container exists
+        const mapContainer = document.querySelector(`#map-${location.name}`);
+        if (mapContainer && typeof L !== 'undefined') {
+            const map = L.map(`map-${location.name}`, {
+                center: [location.lat, location.lon],
+                zoom: location.zoom,
+                zoomControl: false,
+                attributionControl: false
+            });
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
 
-        L.control.zoom({
-            position: 'topright'
-        }).addTo(map);
+            L.control.zoom({
+                position: 'topright'
+            }).addTo(map);
 
-        L.control.attribution({
-            position: 'bottomright'
-        }).addTo(map);
+            L.control.attribution({
+                position: 'bottomright'
+            }).addTo(map);
 
-        // Add a marker for the run location
-        L.marker([location.lat, location.lon]).addTo(map)
-            .bindPopup(`${location.name.charAt(0).toUpperCase() + location.name.slice(1)} Run Location`)
-            .openPopup();
+            L.marker([location.lat, location.lon]).addTo(map)
+                .bindPopup(`${location.name.charAt(0).toUpperCase() + location.name.slice(1)} Run Location`)
+                .openPopup();
 
-        // Force a resize of the map after a short delay
-        setTimeout(() => {
-            map.invalidateSize();
-        }, 100);
+            setTimeout(() => {
+                map.invalidateSize();
+            }, 100);
+        }
     });
 
-      // Initialize Calendar
+    // Initialize Calendar
     function initCalendar() {
         const calendarDays = document.getElementById('calendar-days');
         if (!calendarDays) return;
 
-        // Sample events data
         const events = {
             '2024-11-28': { title: 'TURKEY TROT', link: 'https://www.turkeytrotmiami.com/?gad_source=1&gbraid=0AAAAADGxGX1-pli_Qk87XNYmXFRoQDbd2' }
         };
 
-        const date = new Date(2024, 10); // October 2024
+        const date = new Date(2024, 10);
         const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
         const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+        calendarDays.innerHTML = ''; // Clear existing content
 
         // Add empty cells for days before the first of the month
         for (let i = 0; i < firstDay.getDay(); i++) {
@@ -207,7 +212,6 @@ document.addEventListener('DOMContentLoaded', () => {
             dateSpan.textContent = day;
             dayElement.appendChild(dateSpan);
 
-            // Check if there's an event on this day
             const dateString = `2024-11-${day.toString().padStart(2, '0')}`;
             if (events[dateString]) {
                 const eventLink = document.createElement('a');
@@ -221,10 +225,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Initialize the application
-    function init() {
-        initCalendar();
-    }
-
-    init();
+    initCalendar();
 });
