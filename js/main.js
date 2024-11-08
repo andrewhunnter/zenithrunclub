@@ -47,20 +47,38 @@ document.addEventListener('DOMContentLoaded', () => {
         zoom: 0.9
     });
    
+    // Updated Carousel Code
     const carouselContainer = document.querySelector('.carousel-container');
     const slides = document.querySelectorAll('.carousel-slide');
+    const indicatorsContainer = document.querySelector('.carousel-indicators');
+    
+    // Clear existing indicators
+    indicatorsContainer.innerHTML = '';
+    
+    // Create new indicators
+    slides.forEach((_, index) => {
+        const indicator = document.createElement('div');
+        indicator.classList.add('indicator');
+        if (index === 0) indicator.classList.add('active');
+        indicatorsContainer.appendChild(indicator);
+    });
+
+    // Get the newly created indicators
     const indicators = document.querySelectorAll('.indicator');
     let currentSlide = 0;
     let autoSlideInterval;
 
     function updateCarousel() {
+        // Update slide position
         carouselContainer.style.transform = `translateX(-${currentSlide * 33.333}%)`;
         
         // Update indicators
         indicators.forEach((indicator, index) => {
-            indicator.setAttribute('aria-label', `Go to slide ${index + 1}`);
-            indicator.setAttribute('tabindex', '0');
-            indicator.setAttribute('role', 'button');
+            if (index === currentSlide) {
+                indicator.classList.add('active');
+            } else {
+                indicator.classList.remove('active');
+            }
         });
     }
 
