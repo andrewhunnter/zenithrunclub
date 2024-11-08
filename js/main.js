@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    VANTA.TOPOLOGY({
+     let vantaEffect = VANTA.TOPOLOGY({
         el: "#vanta-container",
         mouseControls: true,
         touchControls: true,
@@ -45,6 +45,12 @@ document.addEventListener('DOMContentLoaded', () => {
         points: 17.00,
         maxDistance: 20.00,
         spacing: 15.00
+    });
+
+    window.addEventListener('beforeunload', () => {
+        if (vantaEffect) {
+          vantaEffect.destroy();
+        }
     });
 
     // Add this carousel initialization code after your existing VANTA.FOG setup
@@ -239,9 +245,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     init();
-      
-      
-    
-      // Call the populateEvents function
-      populateEvents();
 });
