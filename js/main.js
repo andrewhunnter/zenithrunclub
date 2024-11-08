@@ -270,7 +270,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Update indicators
         indicators.forEach((indicator, index) => {
-            indicator.classList.toggle('active', index === currentSlide);
+            indicator.setAttribute('aria-label', `Go to slide ${index + 1}`);
+            indicator.setAttribute('tabindex', '0');
+            indicator.setAttribute('role', 'button');
         });
     }
 
