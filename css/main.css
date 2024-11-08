@@ -219,7 +219,7 @@ h2 {
 }
 
 .carousel-content h2 {
-    color: var(--primary-text);
+    color: var(--accent-color);
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 1rem;
