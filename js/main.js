@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log("DOM fully loaded");
+
     // Hamburger menu functionality
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
@@ -30,21 +31,68 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    VANTA.FOG({
+    VANTA.TOPOLOGY({
         el: "#vanta-container",
         mouseControls: true,
         touchControls: true,
         gyroControls: false,
-        minHeight: 100.00,
-        minWidth: 100.00,
-        highlightColor: 0xff80a4,
-        midtoneColor: 0x0,
-        lowlightColor: 0xff76c6,
-        baseColor: 0x0,
-        blurFactor: 0.6,
-        speed: 0.7,
-        zoom: 0.5
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        color: 0xe319b4,
+        backgroundColor: 0x000000,
+        points: 17.00,
+        maxDistance: 20.00,
+        spacing: 15.00
     });
+
+    // Add this carousel initialization code after your existing VANTA.FOG setup
+    const carouselContainer = document.querySelector('.carousel-container');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const indicators = document.querySelectorAll('.indicator');
+    let currentSlide = 0;
+    let autoSlideInterval;
+
+    function updateCarousel() {
+        carouselContainer.style.transform = `translateX(-${currentSlide * 33.333}%)`;
+        
+        // Update indicators
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentSlide);
+        });
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        updateCarousel();
+    }
+
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(nextSlide, 5000);
+    }
+
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+
+    // Add click events to indicators
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            currentSlide = index;
+            updateCarousel();
+            // Reset auto-slide timer
+            stopAutoSlide();
+            startAutoSlide();
+        });
+    });
+
+    // Add hover pause functionality
+    carouselContainer.addEventListener('mouseenter', stopAutoSlide);
+    carouselContainer.addEventListener('mouseleave', startAutoSlide);
+
+    // Start auto-sliding
+    startAutoSlide();
     
     const locations = [
         { 
@@ -187,6 +235,62 @@ document.addEventListener('DOMContentLoaded', () => {
           eventsContainer.appendChild(eventCard);
         });
       }
+
+      // Initialize Calendar
+    function initCalendar() {
+        const calendarDays = document.getElementById('calendar-days');
+        if (!calendarDays) return;
+
+        // Sample events data
+        const events = {
+            '2024-10-05': { title: 'Morning Run', link: '#' },
+            '2024-10-07': { title: 'Trail Run', link: '#' },
+            '2024-10-16': { title: 'Group Run', link: '#' },
+            '2024-10-22': { title: 'Marathon', link: '#' }
+        };
+
+        const date = new Date(2024, 9); // October 2024
+        const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+        const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+        // Add empty cells for days before the first of the month
+        for (let i = 0; i < firstDay.getDay(); i++) {
+            const dayElement = document.createElement('div');
+            dayElement.className = 'calendar-day inactive';
+            calendarDays.appendChild(dayElement);
+        }
+
+        // Add days of the month
+        for (let day = 1; day <= lastDay.getDate(); day++) {
+            const dayElement = document.createElement('div');
+            dayElement.className = 'calendar-day';
+
+            const dateSpan = document.createElement('span');
+            dateSpan.textContent = day;
+            dayElement.appendChild(dateSpan);
+
+            // Check if there's an event on this day
+            const dateString = `2024-10-${day.toString().padStart(2, '0')}`;
+            if (events[dateString]) {
+                const eventLink = document.createElement('a');
+                eventLink.href = events[dateString].link;
+                eventLink.className = 'event-link';
+                eventLink.textContent = events[dateString].title;
+                dayElement.appendChild(eventLink);
+            }
+
+            calendarDays.appendChild(dayElement);
+        }
+    }
+
+    // Initialize the application
+    function init() {
+        initCalendar();
+    }
+
+    init();
+      
+      
     
       // Call the populateEvents function
       populateEvents();

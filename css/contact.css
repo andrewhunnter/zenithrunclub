@@ -42,7 +42,7 @@
 
 .founder-card {
     flex: 1;
-    background: rgba(0, 0, 0, 0.5);
+    background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
     border-radius: 15px;
     padding: 30px;
     text-align: center;
