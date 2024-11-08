@@ -189,53 +189,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 100);
     });
 
-    function populateEvents() {
-        const eventsContainer = document.querySelector('.events-container');
-        
-        if (!eventsContainer) return;
-    
-        const events = [
-          {
-            name: "Summer Solstice Run",
-            date: "June 21, 2024",
-            time: "6:00 PM",
-            location: "Depot Park, Gainesville",
-            distance: "5K",
-            discountCode: "SOLSTICE2024"
-          },
-          {
-            name: "Miami Beach Sunset Run",
-            date: "July 15, 2024",
-            time: "7:30 PM",
-            location: "South Beach, Miami",
-            distance: "10K",
-          },
-          {
-            name: "Gator Trail Challenge",
-            date: "August 3, 2024",
-            time: "8:00 AM",
-            location: "San Felasco Hammock Preserve",
-            distance: "Half Marathon",
-          }
-        ];
-    
-        events.forEach(event => {
-          const eventCard = document.createElement('div');
-          eventCard.classList.add('event-card');
-          eventCard.innerHTML = `
-            <h3>${event.name}</h3>
-            <span class="event-date">${event.date}</span>
-            <div class="event-details">
-              <p><strong>Time:</strong> ${event.time}</p>
-              <p><strong>Location:</strong> ${event.location}</p>
-              <p><strong>Distance:</strong> ${event.distance}</p>
-            </div>
-            <a href="#" class="register-button">Register Now</a>
-          `;
-          eventsContainer.appendChild(eventCard);
-        });
-      }
-
       // Initialize Calendar
     function initCalendar() {
         const calendarDays = document.getElementById('calendar-days');
@@ -243,13 +196,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Sample events data
         const events = {
-            '2024-10-05': { title: 'Morning Run', link: '#' },
-            '2024-10-07': { title: 'Trail Run', link: '#' },
-            '2024-10-16': { title: 'Group Run', link: '#' },
-            '2024-10-22': { title: 'Marathon', link: '#' }
+            '2024-11-28': { title: 'TURKEY TROT', link: 'https://www.turkeytrotmiami.com/?gad_source=1&gbraid=0AAAAADGxGX1-pli_Qk87XNYmXFRoQDbd2' }
         };
 
-        const date = new Date(2024, 9); // October 2024
+        const date = new Date(2024, 10); // October 2024
         const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
         const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 
@@ -270,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
             dayElement.appendChild(dateSpan);
 
             // Check if there's an event on this day
-            const dateString = `2024-10-${day.toString().padStart(2, '0')}`;
+            const dateString = `2024-11-${day.toString().padStart(2, '0')}`;
             if (events[dateString]) {
                 const eventLink = document.createElement('a');
                 eventLink.href = events[dateString].link;
