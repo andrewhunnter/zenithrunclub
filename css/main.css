@@ -162,6 +162,7 @@ h1 {
 h2 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
+    padding-top: 100px;
 }
 
 #hero-carousel {
@@ -305,13 +306,14 @@ h2 {
     font-size: 1.5rem;
     margin-bottom: 20px;
     text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
-    padding-top: 20px;
+    padding-top: 90px;
 }
 
 .hero-content p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
     color: #ffffff;
+    padding-bottom: 70px;
 }
 
 #content-wrapper {
@@ -468,15 +470,8 @@ h2 {
 #next-run h2 {
     color: var(--primary-text);
     font-size: 2.5rem;
-    margin-bottom: 30px;
     text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
-}
-
-.next-h2 {
-    color: var(--accent-color);
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+    padding-top: 90px;
 }
 
 .run-locations {
