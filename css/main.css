@@ -223,7 +223,7 @@ h2 {
     color: var(--accent-color);
     font-size: 3rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: -0.5rem;
     text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
 }
 
@@ -232,14 +232,53 @@ h2 {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-.carousel-indicators {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
+.social-icons {
     display: flex;
-    gap: 1rem;
-    z-index: 2;
+    justify-content: center;
+    gap: 20px; /* Adjust the gap value as needed for spacing */
+    margin-top: 10px; /* Reduced from 25px to account for new label */
+}
+
+.icon-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 30px; /* Increased padding for larger button */
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--primary-text);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    font-size: 1.1rem; /* Increased font size */
+}
+
+.icon-buttons::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--secondary-bg), var(--accent-color) 50%, var(--primary-text));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.icon-button:hover {
+    background-color: #555;
+}
+
+.icon-button i {
+    font-size: 18px;
 }
 
 .mouse {
@@ -248,7 +287,7 @@ h2 {
     border: 2px solid white;
     border-radius: 20px;
     position: absolute;
-    bottom: 16rem;
+    bottom: 14rem;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -267,8 +306,8 @@ h2 {
 }
 
 @keyframes scroll {
-    0% { transform: translate(-50%, 0); opacity: 1; }
-    100% { transform: translate(-50%, 20px); opacity: 0; }
+    0% { transform: translate(-50%, 0); opacity: 1; background: var(--accent-color); }
+    100% { transform: translate(-50%, 20px); opacity: 0; background: var(--accent-color);}
 }
 
 .banner {
@@ -408,7 +447,6 @@ h2 {
     justify-content: center;
     padding: 15px 30px; /* Increased padding for larger button */
     border-radius: 50px;
-    font-style: italic;
     text-decoration: none;
     font-weight: 700;
     text-transform: uppercase;
