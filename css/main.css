@@ -28,8 +28,11 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Ensure it's behind all content */
+    z-index: -1;
+    pointer-events: none; /* Ensure it doesn't intercept touch events */
+    will-change: transform; /* Optimizes for smoother animations */
 }
+
 
 header {
     position: fixed;
