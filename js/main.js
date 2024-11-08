@@ -51,10 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const carouselContainer = document.querySelector('.carousel-container');
     const slides = document.querySelectorAll('.carousel-slide');
 
-    // Get the newly created indicators
-    let currentSlide = 0;
-    let autoSlideInterval;
-
     function updateCarousel() {
         carouselContainer.style.transform = `translateX(-${currentSlide * (100 / slides.length)}%)`;
     }
