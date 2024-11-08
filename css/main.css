@@ -18,7 +18,9 @@ body {
     background-color: var(--primary-bg);
     width: 100%;
     max-width: 100vw;
+    max-width: 100vw;
     position: relative;
+    height: 100vh;
 
 }
 
@@ -185,6 +187,7 @@ h2 {
     width: 300%; /* 100% times number of slides */
     height: 100%;
     transition: transform 0.5s ease;
+    height: 100vh;
 }
 
 /* Make sure carousel slides and images fill the new height */
@@ -331,35 +334,6 @@ h2 {
     position: relative;
     z-index: 1;
     flex-wrap: wrap; /* Allow wrapping for smaller screens */
-}
-
-.mouse {
-    width: 30px;
-    height: 50px;
-    border: 2px solid white;
-    border-radius: 20px;
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.mouse::before {
-    content: '';
-    width: 4px;
-    height: 8px;
-    background: white;
-    position: absolute;
-    top: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 2px;
-    animation: scroll 2s infinite;
-}
-
-@keyframes scroll {
-    0% { transform: translate(-50%, 0); opacity: 1; }
-    100% { transform: translate(-50%, 20px); opacity: 0; }
 }
 
 .cta-title {
