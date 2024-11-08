@@ -176,6 +176,7 @@ h2 {
     margin-left: -50vw;
     margin-right: -50vw;
     margin-top: 0;
+    border-bottom: 2px solid white;
 }
 
 .carousel-container {
