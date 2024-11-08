@@ -47,33 +47,37 @@ document.addEventListener('DOMContentLoaded', () => {
         zoom: 0.9
     });
    
-    // Updated Carousel Code
+    // Carousel setup
     const carouselContainer = document.querySelector('.carousel-container');
     const slides = document.querySelectorAll('.carousel-slide');
+    const indicatorsContainer = document.querySelector('.carousel-indicators');
 
-    function updateCarousel() {
-        carouselContainer.style.transform = `translateX(-${currentSlide * (100 / slides.length)}%)`;
+    if (carouselContainer && slides.length > 0) {
+        let currentSlide = 0;
+        let autoSlideInterval;
+
+        function updateCarousel() {
+            if (carouselContainer) {
+                carouselContainer.style.transform = `translateX(-${currentSlide * (100 / slides.length)}%)`;
+            }
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateCarousel();
+        }
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(nextSlide, 5000);
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+
+        // Start auto-sliding if elements are correctly set up
+        startAutoSlide();
     }
-
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % slides.length;
-        updateCarousel();
-    }
-
-    function startAutoSlide() {
-        autoSlideInterval = setInterval(nextSlide, 5000);
-    }
-
-    function stopAutoSlide() {
-        clearInterval(autoSlideInterval);
-    }
-
-    // Start auto-sliding
-    startAutoSlide();
-    
-    slides.forEach((slide, idx) => {
-        console.log(`Slide ${idx} dimensions:`, slide.clientWidth, slide.clientHeight);
-    });
 
     // Start auto-sliding
     startAutoSlide();
