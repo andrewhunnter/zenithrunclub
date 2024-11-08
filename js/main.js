@@ -252,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 250);
     });
 
-    // Add this carousel initialization code after your existing VANTA.FOG setup
+   
     const carouselContainer = document.querySelector('.carousel-container');
     const slides = document.querySelectorAll('.carousel-slide');
     const indicators = document.querySelectorAll('.indicator');
@@ -444,5 +444,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     init();
-    setup();
 });
