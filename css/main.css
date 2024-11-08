@@ -241,21 +241,6 @@ h2 {
     z-index: 2;
 }
 
-.indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5);
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.indicator.active {
-    background-color: var(--accent-color);
-    transform: scale(1.2);
-}
-
 .banner {
     width: 100%;
     padding: 60px 0;

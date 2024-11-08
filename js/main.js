@@ -50,21 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Updated Carousel Code
     const carouselContainer = document.querySelector('.carousel-container');
     const slides = document.querySelectorAll('.carousel-slide');
-    const indicatorsContainer = document.querySelector('.carousel-indicators');
-    
-    // Clear existing indicators
-    indicatorsContainer.innerHTML = '';
-    
-    // Create new indicators
-    slides.forEach((_, index) => {
-        const indicator = document.createElement('div');
-        indicator.classList.add('indicator');
-        if (index === 0) indicator.classList.add('active');
-        indicatorsContainer.appendChild(indicator);
-    });
 
     // Get the newly created indicators
-    const indicators = document.querySelectorAll('.indicator');
     let currentSlide = 0;
     let autoSlideInterval;
 
@@ -72,11 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Updating carousel position to slide", currentSlide);
         // Update slide position with potential fixed width (debugging purposes)
         carouselContainer.style.transform = `translateX(-${currentSlide * (100 / slides.length)}%)`;
-        
-        // Update indicators
-        indicators.forEach((indicator, index) => {
-            indicator.classList.toggle('active', index === currentSlide);
-        });
     }
 
     function nextSlide() {
@@ -94,15 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(autoSlideInterval);
     }
 
-    // Add click events to indicators
-    indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', () => {
-            currentSlide = index;
-            updateCarousel();
-            stopAutoSlide();
-            startAutoSlide();
-        });
-    });
 
     // Add hover pause functionality
     carouselContainer.addEventListener('mouseenter', () => {
