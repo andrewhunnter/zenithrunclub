@@ -36,21 +36,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize VANTA only if the container exists
     const vantaContainer = document.getElementById('vanta-container');
-    if (vantaContainer && typeof VANTA !== 'undefined' && VANTA.FOG) {
-        VANTA.FOG({
+    if (vantaContainer && typeof VANTA !== 'undefined' && VANTA.TOPOLOGY) {
+        VANTA.TOPOLOGY({
             el: "#vanta-container",
             mouseControls: true,
             touchControls: true,
             gyroControls: false,
-            minHeight: 100.00,
-            minWidth: 100.00,
-            highlightColor: 0xf061a5,
-            midtoneColor: 0x0,
-            lowlightColor: 0x0,
-            baseColor: 0x0,
-            blurFactor: 0.6,
-            speed: 0.7,
-            zoom: 0.9
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0xed43bd,
+            backgroundColor: 0x000000,
+            points: 17.00,
+            maxDistance: 20.00,
+            spacing: 15.00
         });
     }
 
